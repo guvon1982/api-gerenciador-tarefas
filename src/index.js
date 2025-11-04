@@ -2,12 +2,15 @@ const express = require('express');
 
 const db = require('./config/database');
 
+
+const tarefaRoutes = require('./routes/tarefaRoutes');
+
+
 db.connect();
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -15,6 +18,9 @@ app.get('/', (req, res) => {
     message: 'Olá, Mundo! Esta é a API do Gerenciador de Tarefas.'
   });
 });
+
+
+app.use('/tarefas', tarefaRoutes);
 
 
 app.listen(PORT, () => {
