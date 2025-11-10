@@ -4,6 +4,7 @@ const db = require('./config/database');
 
 
 const tarefaRoutes = require('./routes/tarefaRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 
 db.connect();
@@ -19,6 +20,8 @@ app.get('/', (req, res) => {
   });
 });
 
+
+app.use('/auth', authRoutes);
 
 app.use('/tarefas', tarefaRoutes);
 

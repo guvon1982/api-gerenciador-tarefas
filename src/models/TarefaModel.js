@@ -15,11 +15,18 @@ const TarefaSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  usuario: {
+    type: Schema.Types.ObjectId, // Tipo especial do Mongoose para IDs
+    ref: 'Usuario', // Referencia o Model 'Usuario'
+    required: true,
+  },
   dataCriacao: {
     type: Date,
     default: Date.now,
   },
 });
+
+
 
 const Tarefa = mongoose.model('Tarefa', TarefaSchema);
 
